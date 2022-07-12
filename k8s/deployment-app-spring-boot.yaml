@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/route-disabled: "false"
+    app.openshift.io/vcs-ref: ""
+    app.openshift.io/vcs-uri: https://github.com/remingtonsb/spring-boot-com-mysql.git
+    deployment.kubernetes.io/revision: "2"
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"spring-boot-com-mysql-git:latest","namespace":"grupo23"},"fieldPath":"spec.template.spec.containers[?(@.name==\"spring-boot-com-mysql-git\")].image","pause":"false"}]'
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: "2022-07-11T23:56:13Z"
+  generation: 2
+  labels:
+    app: spring-boot-com-mysql-git
+    app.kubernetes.io/component: spring-boot-com-mysql-git
+    app.kubernetes.io/instance: spring-boot-com-mysql-git
+    app.kubernetes.io/name: spring-boot-com-mysql-git
+    app.kubernetes.io/part-of: spring-boot-com-mysql-git-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+  name: spring-boot-com-mysql-git
+  namespace: grupo23
+  resourceVersion: "150889"
+  uid: fcd8e6f1-c1f0-408b-aec2-3e06c7254eaa
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: spring-boot-com-mysql-git
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring-boot-com-mysql-git
+        deploymentconfig: spring-boot-com-mysql-git
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/grupo23/spring-boot-com-mysql-git@sha256:c69576d5a86ce50e4b49bd84e8493679223009717565c246b116f7384a0e90f1
+        imagePullPolicy: Always
+        name: spring-boot-com-mysql-git
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2022-07-11T23:57:54Z"
+    lastUpdateTime: "2022-07-11T23:57:54Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-07-11T23:56:13Z"
+    lastUpdateTime: "2022-07-11T23:57:54Z"
+    message: ReplicaSet "spring-boot-com-mysql-git-69b9485878" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: ""
+    app.openshift.io/vcs-uri: https://github.com/remingtonsb/spring-boot-com-mysql.git
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: "2022-07-11T23:56:13Z"
+  labels:
+    app: spring-boot-com-mysql-git
+    app.kubernetes.io/component: spring-boot-com-mysql-git
+    app.kubernetes.io/instance: spring-boot-com-mysql-git
+    app.kubernetes.io/name: spring-boot-com-mysql-git
+    app.kubernetes.io/part-of: spring-boot-com-mysql-git-app
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+  name: spring-boot-com-mysql-git
+  namespace: grupo23
+  resourceVersion: "150255"
+  uid: 3561a3cd-94e9-4dd0-aa92-5e1357654bd4
+spec:
+  clusterIP: 172.30.74.173
+  clusterIPs:
+  - 172.30.74.173
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: 8443-tcp
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: spring-boot-com-mysql-git
+    deploymentconfig: spring-boot-com-mysql-git
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
